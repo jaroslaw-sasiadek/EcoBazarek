@@ -1,3 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--c1: #412f22;
+		--c2: #f6f5f1;
+		--c3: #46aa42;
+		--c4: #def2dd;
+		--c5: #ffffff;
+		--c6: #fcfe7f;
+		--c7: #e11d48;
+		--c8: #464646;
+	}
+
+	* {
+		font-family: Roboto, sans-serif;
+	}
+
+	body {
+		overflow-y: scroll;
+		background-color: var(--c2);
+	}
+
+	#root {
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		min-height: 100vh;
+		align-items: center;
+	}
+
+	main {
+		display: flex;
+		width: 100%;
+		max-width: 1600px;
+	}
+
+	nav .active {
+		color: var(--c6);
+	}
+
+	h1,
+	h2,
+	h3 {
+		color: var(--c1);
+		text-transform: uppercase;
+	}
+
+	h1 {
+		font-size: 48px;
+		font-weight: 900;
+	}
+
+	h2 {
+		font-size: 32px;
+		font-weight: 500;
+	}
+
+	h3 {
+		font-size: 24px;
+		font-weight: 500;
+	}
+
+	p {
+		font-size: 12px;
+		font-weight: 300;
+	}
+
+	button,
+	button[type="button"] {
+		background-color: var(--c3);
+	}
+
+	input {
+		height: 42px;
+		padding: 0px 8px;
+		cursor: pointer;
+		border-radius: 2px;
+		font-size: 18px;
+		color: var(--c1);
+	}
+}
