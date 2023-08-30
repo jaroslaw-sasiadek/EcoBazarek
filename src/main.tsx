@@ -4,17 +4,28 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.tsx";
 import "./index.css";
-import { HomePage } from "./pages";
+import {
+	HomePage,
+	AboutPage,
+	ProductsPage,
+	ContactPage,
+	TermsOfServicePage,
+	PrivacyPolicyPage,
+	NotFoundPage,
+} from "./pages";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
 		children: [
-			{
-				path: "/",
-				element: <HomePage />,
-			},
+			{ path: "/", element: <HomePage /> },
+			{ path: "/o-nas", element: <AboutPage /> },
+			{ path: "/produkty", element: <ProductsPage /> },
+			{ path: "/kontakt", element: <ContactPage /> },
+			{ path: "/warunki-użytkowania", element: <TermsOfServicePage /> },
+			{ path: "/polityka-prywatności", element: <PrivacyPolicyPage /> },
+			{ path: "/*", element: <NotFoundPage /> },
 		],
 	},
 ]);
