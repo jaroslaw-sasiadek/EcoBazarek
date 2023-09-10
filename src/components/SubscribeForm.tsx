@@ -1,16 +1,9 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 
-import { handleData } from "./data";
+import { Data } from "../API/_Data";
 
 export function SubscribeForm() {
 	const [email, setEmail] = useState("");
-
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		handleData.subscribe(email);
-		toast.success("Dziękujemy za subskrypcję!", { position: "bottom-center" });
-	};
 
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(event.target.value);
@@ -19,7 +12,7 @@ export function SubscribeForm() {
 	return (
 		<form
 			className="flex justify-center gap-[26px] mt-[30px] mb-[16px]"
-			onSubmit={handleSubmit}
+			onSubmit={(event) => Data.Others.Subscribe(event, email)}
 		>
 			<input
 				className="w-[420px] bg-[--c2]"
