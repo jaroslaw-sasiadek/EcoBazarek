@@ -83,4 +83,14 @@
 		font-size: 18px;
 		color: var(--c1);
 	}
+
+	.Loader {
+		width: 120px;
+		height: 120px;
+		border: 10px solid var(--c3);
+		border-bottom-color: transparent;
+		border-radius: 50%;
+		display: inline-block;
+		box-sizing: border-box;
+	}
 }
