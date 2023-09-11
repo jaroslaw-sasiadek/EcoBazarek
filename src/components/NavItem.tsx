@@ -9,7 +9,10 @@ export const NavItem = (props: NavItemProps) => {
 	const { children, to, ...other } = props;
 	return (
 		<li {...other}>
-			<NavLink className={({ isActive }) => (isActive ? "active" : "")} to={to}>
+			<NavLink
+				className={({ isActive }) => (isActive ? "text-[--c6]" : "")}
+				to={to}
+			>
 				{children}
 			</NavLink>
 		</li>

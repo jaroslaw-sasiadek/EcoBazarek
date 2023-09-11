@@ -15,14 +15,14 @@ export function SubscribeForm() {
 			onSubmit={(event) => Data.Others.Subscribe(event, email)}
 		>
 			<input
-				className="w-[420px] bg-[--c2]"
+				className="w-[420px] h-[42px] px-[10px] bg-[--c2] rounded-[2px] text-[18px] font-[500] text-[--c1]"
 				value={email}
 				onChange={handleInput}
 				type="email"
 				required
 			/>
 			<input
-				className="text-[16px] w-[134px] bg-[--c3] text-[--c5]"
+				className=" w-[134px] bg-[--c3] rounded-[2px] text-[14px] text-[--c5]"
 				type="submit"
 				value="SUBSKRYBUJ"
 			/>

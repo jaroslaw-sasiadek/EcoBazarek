@@ -9,8 +9,4 @@ else if (number === 2) source += "raspberry-64.png";
 else if (number === 3) source += "cheese-64.png";
 else if (number === 4) source += "pork-64.png"; */
 
-export const Loader = () => (
-	<section className="absolute top-[20%] left-[50%]">
-		<span className="Loader animate-spin" />
-	</section>
-);
+export const Loader = () => <span className="animate-spin" />;
