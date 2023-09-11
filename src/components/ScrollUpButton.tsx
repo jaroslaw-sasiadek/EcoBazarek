@@ -1,6 +1,6 @@
-import { ChevronUpIcon } from "@heroicons/react/24/outline";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
-const ScrollUpButton = () => (
+export const ScrollUpButton = () => (
 	<button
 		type="button"
 		title="ScrollToTop"
@@ -10,5 +10,3 @@ const ScrollUpButton = () => (
 		<ChevronUpIcon className="w-[32px] mt-[4px]" />
 	</button>
 );
-
-export default ScrollUpButton;

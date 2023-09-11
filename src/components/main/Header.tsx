@@ -6,7 +6,7 @@ import {
 
 import { Assets } from "../../assets/_Assets";
 import { NavItem } from "../NavItem";
-import ScrollUpButton from "../ScrollUpButton";
+import { ScrollUpButton } from "../ScrollUpButton";
 
 export const Header = () => {
 	return (
