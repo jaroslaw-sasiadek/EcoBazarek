@@ -12,7 +12,7 @@ function PostSubscribe(event: React.FormEvent<HTMLFormElement>, email: string) {
 	const successMessage = "Dziękujemy za subskrypcję!";
 	const errorMessage = "Nie udało się zasubskrybować!";
 
-	handleRequest({ event, request, successMessage, errorMessage });
+	return handleRequest({ event, request, successMessage, errorMessage });
 }
 
 export { PostSubscribe as Subscribe };
