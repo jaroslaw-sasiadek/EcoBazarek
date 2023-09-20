@@ -3,7 +3,12 @@ import { Assets } from "../assets/_Assets";
 
 export const AboutPage = () => {
 	return (
-		<Content title="EcoBazarek | O nas">
+		<Content
+			title="EcoBazarek | O nas"
+			description="Informacje o naszej firmie"
+			keywords="about, us, nas, nasze, uprawy"
+			isLoading={false}
+		>
 			<img className="w-full" src={Assets.Images.aboutUs} alt="Nasza firma" />
 			<h1 className="py-[40px] text-[48px] font-[900] text-[--c1] uppercase">
 				O nas
