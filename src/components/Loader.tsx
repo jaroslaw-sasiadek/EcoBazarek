@@ -1,12 +1,11 @@
-/* const number = Math.floor(Math.random() * 5);
+import { Assets } from "../assets/_Assets";
 
-let source =
-	"https://api-eko-bazarek.azurewebsites.net/images/categories/icons8-";
+const index = Math.floor(Math.random() * Assets.Loader.length);
+const source = Assets.Loader[index];
 
-if (number === 0) source += "blueberry-64.png";
-else if (number === 1) source += "pear-64.png";
-else if (number === 2) source += "raspberry-64.png";
-else if (number === 3) source += "cheese-64.png";
-else if (number === 4) source += "pork-64.png"; */
-
-export const Loader = () => <span className="animate-spin" />;
+export const Loader = () => (
+	<section className="w-[100%] h-[100%] mt-[64px] left-0 top-0 pt-[40vh] z-50 fixed flex flex-col items-center backdrop-opacity-40 bg-[#f6f5f1]/75">
+		<img className="w-[150px] h-[150px] animate-bounce" src={source} alt="" />
+		<span className="absolute top-[34vh] w-[200px] h-[200px] border-[16px] rounded-full animate-ping border-[--c3]" />
+	</section>
+);

@@ -1,15 +1,16 @@
-import { LiHTMLAttributes } from "react";
 import { NavLink, To } from "react-router-dom";
 
-export interface NavItemProps extends LiHTMLAttributes<HTMLLIElement> {
+export interface NavItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+	linkTitle?: string;
 	to: To;
 }
 
 export const NavItem = (props: NavItemProps) => {
-	const { children, to, ...other } = props;
+	const { children, linkTitle, to, ...other } = props;
 	return (
-		<li {...other}>
+		<li className="hover:text-[--c1] transition" {...other}>
 			<NavLink
+				title={linkTitle}
 				className={({ isActive }) => (isActive ? "text-[--c6]" : "")}
 				to={to}
 			>
