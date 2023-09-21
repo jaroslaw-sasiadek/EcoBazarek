@@ -19,8 +19,7 @@ async function handleRequest(props: RequestProps) {
 		if (axios.isAxiosError(error) && error.response) {
 			errorDescription = `\nError: ${error.response.status} (${error.response.statusText})`;
 			if (error.response?.data?.errors) {
-				console.log(error.response.data.errors);
-				// RETURN
+				return error.response.data.errors;
 			}
 		}
 		toast.error(errorMessage + errorDescription);

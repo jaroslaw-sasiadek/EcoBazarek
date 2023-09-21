@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { UserCreateProps } from "../interfaces/UserProps";
 import { UserContext } from "../context/UserContext";
@@ -10,12 +10,38 @@ import { ButtonStyle } from "../styles/Button.styles";
 
 export const RegistrationPage = () => {
 	const { isLoggedIn } = useContext(UserContext);
+	const [isDisabled, setIsDisabled] = useState(false);
+	const [buttonStyle, setButtonStyle] = useState(ButtonStyle.green.enable);
+	const [errors, setErrors] = useState<string[]>([]);
 
-	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+		setIsDisabled(true);
+		setButtonStyle(ButtonStyle.green.disable);
 		const formData = new FormData(event.target as HTMLFormElement);
 		const data = Object.fromEntries(formData) as unknown as UserCreateProps;
-		Data.Users.PostUsers(event, data);
+		const response = await Data.Users.PostUsers(event, data);
+		if (response && response !== "error") setErrors(response);
+		if (!response) return;
+		setIsDisabled(false);
+		setButtonStyle(ButtonStyle.green.enable);
 	}
+
+	const UlErrors = () => {
+		return (
+			<ul className="text-[12px] font-[500]">
+				{errors.length > 0 && (
+					<li className="py-[2px]">
+						Hasło musi spełniać następujące wymagania:
+					</li>
+				)}
+				{errors.map((error) => (
+					<li className="text-[--c7] font-[800] py-[2px]" key={error}>
+						{error}
+					</li>
+				))}
+			</ul>
+		);
+	};
 
 	return (
 		<Content
@@ -92,6 +118,7 @@ export const RegistrationPage = () => {
 								/>
 							</div>
 						</div>
+						<UlErrors />
 						<h2 className="py-[35px] text-[14px] font-[900] text-[--c1] uppercase">
 							Adres i informacje o gospodarstwie
 						</h2>
@@ -197,10 +224,11 @@ export const RegistrationPage = () => {
 								value="Reset"
 							/>
 							<input
-								className={ButtonStyle.green.enable}
+								className={buttonStyle}
 								name="save"
 								type="submit"
 								value="Zapisz"
+								disabled={isDisabled}
 							/>
 						</div>
 					</form>
