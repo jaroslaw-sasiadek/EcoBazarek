@@ -1,10 +1,10 @@
-import { Content } from "../components/main/Content";
 import { Data } from "../API/_Data";
+import { InputText } from "../components/InputText";
 import { SnazzyMap } from "../components/SnazzyMap";
+import { Content } from "../components/main/Content";
+import { ContactProps } from "../interfaces/ContactProps";
 import { ButtonStyle } from "../styles/Button.styles";
 import { TextFieldStyle } from "../styles/TextField.styles";
-import { ContactProps } from "../interfaces/ContactProps";
-import { InputText } from "../components/InputText";
 
 export const ContactPage = () => {
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -24,7 +24,7 @@ export const ContactPage = () => {
 				Kontakt
 			</h1>
 			<SnazzyMap />
-			<label className="flex flex-col cursor-pointer mt-[642px] w-[690px]">
+			<label className="flex flex-col cursor-pointer mt-[722px] w-[690px]">
 				<h2 className="pt-[72px] pb-[38px] text-[20px] font-[900] text-[--c1] uppercase">
 					Napisz wiadomość
 				</h2>
