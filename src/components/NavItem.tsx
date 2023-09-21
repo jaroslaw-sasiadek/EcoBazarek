@@ -8,7 +8,7 @@ export interface NavItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
 export const NavItem = (props: NavItemProps) => {
 	const { children, linkTitle, to, ...other } = props;
 	return (
-		<li className="hover:text-[--c1] transition" {...other}>
+		<li className="hover:text-[--c1] transition select-none" {...other}>
 			<NavLink
 				title={linkTitle}
 				className={({ isActive }) => (isActive ? "text-[--c6]" : "")}

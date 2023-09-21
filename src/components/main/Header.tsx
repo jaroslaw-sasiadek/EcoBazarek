@@ -17,7 +17,7 @@ export const Header = () => {
 					src={Assets.Icons.logo}
 					alt="ikona logo"
 				/>
-				<p className="text-[20px] font-[400]">EcoBazarek</p>
+				<p className="text-[20px] font-[400] select-none">EcoBazarek</p>
 			</section>
 			<nav className="grid grid-cols-3 col-span-3 w-[100%]">
 				<ul className="col-span-2 flex items-center justify-center gap-[50px] left-0 w-[100%]">

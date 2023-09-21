@@ -93,7 +93,7 @@ export const RegistrationPage = () => {
 					Jesteś zalogowany!
 				</h1>
 			) : (
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} noValidate>
 					<label className="flex flex-col w-[690px] cursor-pointer">
 						<h1 className="pt-[72px] pb-[38px] text-[48px] font-[900] text-[--c1] uppercase">
 							Rejestracja
@@ -104,14 +104,12 @@ export const RegistrationPage = () => {
 								{...getFieldProps("firstName")}
 								type="text"
 								autoComplete="given-name"
-								required
 							/>
 							<InputText
 								spanName="Nazwisko*"
 								{...getFieldProps("lastName")}
 								type="text"
 								autoComplete="family-name"
-								required
 							/>
 						</div>
 						<div className="flex w-full gap-[15px]">
@@ -120,14 +118,12 @@ export const RegistrationPage = () => {
 								{...getFieldProps("email")}
 								type="email"
 								autoComplete="email"
-								required
 							/>
 							<InputText
 								spanName="Telefon*"
 								{...getFieldProps("phone")}
 								type="phone"
 								autoComplete="phone"
-								required
 							/>
 						</div>
 						<div className="flex w-full gap-[15px]">
@@ -135,13 +131,11 @@ export const RegistrationPage = () => {
 								spanName="Hasło*"
 								{...getFieldProps("password")}
 								type="password"
-								required
 							/>
 							<InputText
 								spanName="Powtórz hasło*"
 								{...getFieldProps("repeatPassword")}
 								type="password"
-								required
 							/>
 						</div>
 						<UlErrors />
@@ -154,7 +148,6 @@ export const RegistrationPage = () => {
 							spanName="Nazwa gospodarstwa*"
 							{...getFieldProps("farmName")}
 							type="text"
-							required
 						/>
 						<span className="text-[12px] font-[500]">Opis gospodarstwa</span>
 						<textarea
@@ -167,7 +160,6 @@ export const RegistrationPage = () => {
 									spanName="Ulica*"
 									{...getFieldProps("street")}
 									type="text"
-									required
 								/>
 							</div>
 							<div className="flex w-[50%] gap-[16px]">
@@ -175,7 +167,6 @@ export const RegistrationPage = () => {
 									spanName="Numer domu*"
 									{...getFieldProps("streetNumber")}
 									type="text"
-									required
 								/>
 								<InputText
 									spanName="Numer mieszkania"
@@ -189,13 +180,11 @@ export const RegistrationPage = () => {
 								spanName="Miasto/ Wieś*"
 								{...getFieldProps("city")}
 								type="text"
-								required
 							/>
 							<InputText
 								spanName="Kod pocztowy*"
 								{...getFieldProps("postCode")}
 								type="text"
-								required
 							/>
 						</div>
 						<div className="flex gap-[16px]">
@@ -203,13 +192,11 @@ export const RegistrationPage = () => {
 								spanName="Województwo*"
 								{...getFieldProps("voivodeship")}
 								type="text"
-								required
 							/>
 							<InputText
 								spanName="Powiat*"
 								{...getFieldProps("county")}
 								type="text"
-								required
 							/>
 						</div>
 						<div className="flex gap-[16px]">
@@ -217,13 +204,11 @@ export const RegistrationPage = () => {
 								spanName="Gmina*"
 								{...getFieldProps("district")}
 								type="text"
-								required
 							/>
 							<InputText
 								spanName="Kraj*"
 								{...getFieldProps("country")}
 								type="text"
-								required
 							/>
 						</div>
 						<div className="mt-[30px] flex w-full justify-end">
