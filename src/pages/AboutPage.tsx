@@ -43,10 +43,15 @@ export const AboutPage = () => {
 			<h2 className="py-[40px] text-[48px] font-[900] text-[--c1] uppercase">
 				Nasze uprawy z lotu ptaka
 			</h2>
-			<video className="pb-[40px]" width="100%" autoPlay loop>
+			<iframe
+				className="pb-[40px] max-w-[1040px] w-full h-[620px]"
+				title="Nasze uprawy z lotu ptaka"
+				src="https://player.vimeo.com/video/724732134"
+			></iframe>
+			{/* <video className="pb-[40px]" width="100%" autoPlay loop>
 				<source src={Assets.Videos.ourCrops} type="video/mp4" />
 				Twoja przeglądarka nie wspiera tagu wideo.
-			</video>
+			</video> */}
 		</Content>
 	);
 };

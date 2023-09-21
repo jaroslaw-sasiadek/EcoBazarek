@@ -52,4 +52,8 @@ body {
 	section ul.products {
 		justify-content: center;
 	}
+	iframe {
+		max-width: 776px;
+		max-height: 480px;
+	}
 }
