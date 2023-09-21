@@ -35,6 +35,10 @@ export const RegistrationPage = () => {
 	const [buttonStyle, setButtonStyle] = useState(ButtonStyle.green.enable);
 	const [errors, setErrors] = useState<string[]>([]);
 
+	function handleReset() {
+		setFormData(defaultUserState);
+	}
+
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		setIsDisabled(true);
 		setButtonStyle(ButtonStyle.green.disable);
@@ -89,11 +93,11 @@ export const RegistrationPage = () => {
 					Jesteś zalogowany!
 				</h1>
 			) : (
-				<label className="flex flex-col w-[690px] cursor-pointer">
-					<h1 className="pt-[72px] pb-[38px] text-[48px] font-[900] text-[--c1] uppercase">
-						Rejestracja
-					</h1>
-					<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit}>
+					<label className="flex flex-col w-[690px] cursor-pointer">
+						<h1 className="pt-[72px] pb-[38px] text-[48px] font-[900] text-[--c1] uppercase">
+							Rejestracja
+						</h1>
 						<div className="flex w-full gap-[15px]">
 							<InputText
 								spanName="Imię*"
@@ -141,6 +145,8 @@ export const RegistrationPage = () => {
 							/>
 						</div>
 						<UlErrors />
+					</label>
+					<label className="flex flex-col w-[690px] cursor-pointer">
 						<h2 className="py-[35px] text-[14px] font-[900] text-[--c1] uppercase">
 							Adres i informacje o gospodarstwie
 						</h2>
@@ -226,6 +232,7 @@ export const RegistrationPage = () => {
 								name="reset"
 								type="reset"
 								value="Reset"
+								onClick={handleReset}
 							/>
 							<input
 								className={buttonStyle}
@@ -235,8 +242,8 @@ export const RegistrationPage = () => {
 								disabled={isDisabled}
 							/>
 						</div>
-					</form>
-				</label>
+					</label>
+				</form>
 			)}
 		</Content>
 	);
