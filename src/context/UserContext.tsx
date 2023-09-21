@@ -32,8 +32,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 			const { token, user } = response as LoginUserResponse;
 			setToken(token);
 			setProfile(user);
-			sessionStorage.setItem("token", token);
-			sessionStorage.setItem("user", JSON.stringify(user));
+			token && sessionStorage.setItem("token", token);
+			user && sessionStorage.setItem("user", JSON.stringify(user));
 		} finally {
 			setLoggingIn(false);
 		}
