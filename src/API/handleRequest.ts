@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { RequestProps } from "../interfaces/RequestProps";
+import { RequestProps } from "../interfaces/Request";
 
 const defaultErrorMessage = "Nie udało się pobrać zawartości!";
 

@@ -1,4 +1,5 @@
-import { Content } from "../components/main/Content";
+import { Content } from "../components";
+import { HeaderStyles, ParagraphStyles } from "../styles";
 
 export const PrivacyPolicyPage = () => {
 	return (
@@ -8,10 +9,8 @@ export const PrivacyPolicyPage = () => {
 			description="Zapoaznaj się z polityką prywatności naszej aplikacji"
 			isLoading={false}
 		>
-			<h1 className="py-[40px] text-[48px] font-[900] text-[--c1] uppercase">
-				Polityka prywatności
-			</h1>
-			<p className="text-[16px] text-[--c1]">
+			<h1 className={HeaderStyles.brown}>Polityka prywatności</h1>
+			<p className={ParagraphStyles.default}>
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
 				reiciendis autem ad esse laudantium? Dolorem debitis voluptatum delectus
 				omnis enim, aliquid aliquam eos pariatur quos dolor! Optio ipsum

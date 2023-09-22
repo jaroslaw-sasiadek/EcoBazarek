@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { Api } from "../apiURL";
-import { UserCreateProps } from "../../interfaces/UserProps";
+import { UserCreateProps } from "../../interfaces";
 import { handleRequest } from "../handleRequest";
 
 export async function PostUsers(

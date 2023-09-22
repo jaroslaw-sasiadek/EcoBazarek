@@ -7,7 +7,7 @@ export interface LinkItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
 export const LinkItem = (props: LinkItemProps) => {
 	const { children, to, ...other } = props;
 	return (
-		<li className="hover:text-[--c6] transition" {...other}>
+		<li className="hover:text-c6 transition" {...other}>
 			<Link to={to}>{children}</Link>
 		</li>
 	);

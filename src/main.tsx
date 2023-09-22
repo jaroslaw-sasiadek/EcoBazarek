@@ -3,10 +3,9 @@ import ReactDOM from "react-dom/client";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
-import { UserProvider } from "./context/UserContext.tsx";
-import { Header } from "./components/main/Header.tsx";
-import { Footer } from "./components/main/Footer.tsx";
-import { Pages } from "./pages/_Pages.tsx";
+import { UserProvider } from "./context";
+import { Header, Footer } from "./components";
+import { Pages } from "./pages";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

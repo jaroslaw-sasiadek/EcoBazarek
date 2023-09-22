@@ -1,9 +1,10 @@
-import { Content } from "../components/main/Content";
+import { Content } from "../components";
+import { HeaderStyles } from "../styles";
 
 export const ProductsPage = () => {
 	return (
 		<Content title="EcoBazarek | Produkty">
-			<h1 className="text-[48px] font-[900] text-[--c1]">ProductsPage</h1>
+			<h1 className={HeaderStyles.brown}>ProductsPage</h1>
 		</Content>
 	);
 };

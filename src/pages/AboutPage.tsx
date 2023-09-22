@@ -1,5 +1,6 @@
-import { Content } from "../components/main/Content";
-import { Assets } from "../assets/_Assets";
+import { Content } from "../components";
+import { Assets } from "../assets";
+import { HeaderStyles, ParagraphStyles } from "../styles";
 
 export const AboutPage = () => {
 	return (
@@ -9,11 +10,9 @@ export const AboutPage = () => {
 			keywords="about, us, nas, nasze, uprawy"
 			isLoading={false}
 		>
-			<img className="w-full" src={Assets.Images.aboutUs} alt="Nasza firma" />
-			<h1 className="py-[40px] text-[48px] font-[900] text-[--c1] uppercase">
-				O nas
-			</h1>
-			<p className="text-[16px] text-[--c1]">
+			<img src={Assets.Images.aboutUs} alt="Nasza firma" />
+			<h1 className={HeaderStyles.brown}>O nas</h1>
+			<p className={ParagraphStyles.default}>
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
 				reiciendis autem ad esse laudantium? Dolorem debitis voluptatum delectus
 				omnis enim, aliquid aliquam eos pariatur quos dolor! Optio ipsum
@@ -40,9 +39,7 @@ export const AboutPage = () => {
 				voluptate labore exercitationem. Est, dicta sequi. Est iure animi
 				incidunt temporibus repellat facilis suscipit.
 			</p>
-			<h2 className="py-[40px] text-[48px] font-[900] text-[--c1] uppercase">
-				Nasze uprawy z lotu ptaka
-			</h2>
+			<h2 className={HeaderStyles.brown}>Nasze uprawy z lotu ptaka</h2>
 			<iframe
 				className="pb-[40px] max-w-[1040px] w-full h-[620px]"
 				title="Nasze uprawy z lotu ptaka"

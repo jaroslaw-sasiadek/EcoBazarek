@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { Api } from "../apiURL";
 import { handleRequest } from "../handleRequest";
-import { ContactProps } from "../../interfaces/ContactProps";
+import { ContactProps } from "../../interfaces";
 
 async function PostContact(
 	event: React.FormEvent<HTMLFormElement>,

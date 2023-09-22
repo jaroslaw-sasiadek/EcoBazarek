@@ -2,58 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--c1: #412f22;
-	--c2: #f6f5f1;
-	--c3: #46aa42;
-	--c4: #def2dd;
-	--c5: #ffffff;
-	--c6: #fcfe7f;
-	--c7: #e11d48;
-	--c8: #464646;
-}
-
-* {
-	font-family: Roboto, sans-serif;
-}
-
-body {
-	overflow-y: scroll;
-	background-color: var(--c2);
-}
-
-#root {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	align-items: center;
-}
-
-@media only screen and (max-width: 1100px) {
-	header.w-\[100\%\] {
-		height: 120px;
+@layer base {
+	body {
+		@apply overflow-y-scroll;
+		@apply bg-c2;
 	}
-	header ul.left-0 {
-		flex-direction: column;
-		left: 46%;
-		gap: 0;
-		top: 8px;
-	}
-	header svg.w-\[24px\] {
-		width: 30px;
-	}
-	main.max-w-\[1040px\] {
-		max-width: 776px;
-		padding-top: 120px;
-	}
-	.top-categories {
-		margin-left: 44px;
-	}
-	section ul.products {
-		justify-content: center;
-	}
-	iframe {
-		max-width: 776px;
-		max-height: 480px;
+	#root {
+		@apply flex;
+		@apply flex-col;
+		@apply min-h-[100vh];
+		@apply items-center;
 	}
 }
