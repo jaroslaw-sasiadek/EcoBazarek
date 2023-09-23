@@ -12,6 +12,7 @@ export function SubscribeForm() {
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		const isEmailValid = isValid.email(email);
+		event.preventDefault();
 		if (isEmailValid) {
 			setIsDisabled(true);
 			setButtonStyle(ButtonStyles.green.disable);
