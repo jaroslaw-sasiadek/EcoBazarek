@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { Content, InputText, InputTextArea } from "../../components";
 import { UserContext } from "../../context";
 import { HeaderStyles, ButtonStyles } from "../../styles";
-import { UlErrors } from "./UlErrors";
 import { useRegistrationForm } from "./useRegistrationForm";
 
 export const RegistrationPage = () => {
@@ -28,12 +27,14 @@ export const RegistrationPage = () => {
 								{...getFieldProps("firstName")}
 								type="text"
 								autoComplete="given-name"
+								errorText={states.errors.firstName}
 							/>
 							<InputText
 								spanName="Nazwisko*"
 								{...getFieldProps("lastName")}
 								type="text"
 								autoComplete="family-name"
+								errorText={states.errors.lastName}
 							/>
 						</div>
 						<div className="flex w-full gap-[15px]">
@@ -42,12 +43,14 @@ export const RegistrationPage = () => {
 								{...getFieldProps("email")}
 								type="email"
 								autoComplete="email"
+								errorText={states.errors.email}
 							/>
 							<InputText
 								spanName="Telefon*"
 								{...getFieldProps("phone")}
 								type="phone"
 								autoComplete="phone"
+								errorText={states.errors.phone}
 							/>
 						</div>
 						<div className="flex w-full gap-[15px]">
@@ -55,14 +58,18 @@ export const RegistrationPage = () => {
 								spanName="Hasło*"
 								{...getFieldProps("password")}
 								type="password"
+								autoComplete="new-password"
+								errorText={states.errors.password}
 							/>
 							<InputText
 								spanName="Powtórz hasło*"
 								{...getFieldProps("repeatPassword")}
 								type="password"
+								autoComplete="new-password"
+								errorText={states.errors.repeatPassword}
 							/>
 						</div>
-						<UlErrors errors={states.errors} />
+						{/* <UlErrors errors={states.errors} /> */}
 					</label>
 					<label className="flex flex-col w-[690px] cursor-pointer">
 						<h2 className="py-[35px] text-[14px] font-[900] text-c1 uppercase">
@@ -72,12 +79,14 @@ export const RegistrationPage = () => {
 							spanName="Nazwa gospodarstwa*"
 							{...getFieldProps("farmName")}
 							type="text"
+							errorText={states.errors.farmName}
 						/>
 						<InputTextArea
 							spanName="Opis gospodarstwa"
 							inputClass={`mb-[34px] block`}
 							name="farmDesc"
 							{...getFieldProps("farmDesc")}
+							errorText={states.errors.farmDesc}
 						/>
 						<div className="flex w-full gap-[16px]">
 							<div className="w-[50%]">
@@ -85,6 +94,7 @@ export const RegistrationPage = () => {
 									spanName="Ulica*"
 									{...getFieldProps("street")}
 									type="text"
+									errorText={states.errors.street}
 								/>
 							</div>
 							<div className="flex w-[50%] gap-[16px]">
@@ -92,6 +102,7 @@ export const RegistrationPage = () => {
 									spanName="Numer domu*"
 									{...getFieldProps("streetNumber")}
 									type="text"
+									errorText={states.errors.streetNumber}
 								/>
 								<InputText
 									spanName="Numer mieszkania"
@@ -105,11 +116,13 @@ export const RegistrationPage = () => {
 								spanName="Miasto/ Wieś*"
 								{...getFieldProps("city")}
 								type="text"
+								errorText={states.errors.city}
 							/>
 							<InputText
 								spanName="Kod pocztowy*"
 								{...getFieldProps("postCode")}
 								type="text"
+								errorText={states.errors.postCode}
 							/>
 						</div>
 						<div className="flex gap-[16px]">
@@ -117,11 +130,13 @@ export const RegistrationPage = () => {
 								spanName="Województwo*"
 								{...getFieldProps("voivodeship")}
 								type="text"
+								errorText={states.errors.voivodeship}
 							/>
 							<InputText
 								spanName="Powiat*"
 								{...getFieldProps("county")}
 								type="text"
+								errorText={states.errors.county}
 							/>
 						</div>
 						<div className="flex gap-[16px]">
@@ -129,11 +144,13 @@ export const RegistrationPage = () => {
 								spanName="Gmina*"
 								{...getFieldProps("district")}
 								type="text"
+								errorText={states.errors.district}
 							/>
 							<InputText
 								spanName="Kraj*"
 								{...getFieldProps("country")}
 								type="text"
+								errorText={states.errors.country}
 							/>
 						</div>
 						<div className="mt-[30px] flex w-full justify-end">
