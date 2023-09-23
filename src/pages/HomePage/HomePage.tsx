@@ -1,7 +1,7 @@
 import { Assets } from "../../assets";
 import { Content, UlCategories } from "../../components";
 import { generateMock } from "./generateMock";
-import { useGetData } from "./getData";
+import { useGetData } from "./useGetData";
 
 export const HomePage = () => {
 	const { loading, topCategories } = useGetData();

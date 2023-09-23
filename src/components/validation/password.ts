@@ -1,4 +1,8 @@
 export function password(password: string) {
-	const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}$/;
-	return (password && passwordRegex.test(password)) as boolean;
+	return {
+		isBig: /^(?=.*[A-Z])/.test(password),
+		isSymbol: /(?=.*[!@#$%^&*])/.test(password),
+		isNumber: /(?=.*[0-9])/.test(password),
+		isLong: /.{8,}$/.test(password),
+	};
 }

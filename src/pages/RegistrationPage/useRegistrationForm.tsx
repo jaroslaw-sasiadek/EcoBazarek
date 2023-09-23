@@ -29,12 +29,25 @@ export const useRegistrationForm = () => {
 		setIsDisabled(true);
 		setButtonStyle(ButtonStyles.green.disable);
 
-		if (formData.password !== formData.repeatPassword) console.log("hello");
+		// Validatation on frontend
+		if (formData.password !== formData.repeatPassword) {
+			setIsDisabled(false);
+			setButtonStyle(ButtonStyles.green.enable);
+			const message = "Hasła muszą się zgadzać!";
+			setErrors({
+				["password"]: message,
+				["repeatPassword"]: message,
+			});
+			event.preventDefault();
+			return;
+		}
 		const data = { ...formData };
 		delete data["repeatPassword"];
 
 		event.preventDefault();
 		const response = await Data.Users.PostUsers(event, data);
+
+		// Validatation on backend
 		if (response && response !== "error") {
 			const objectErrors = response.reduce(
 				(previous: ResponseErrors, current: ResponseItem) => {

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Content, InputText, InputTextArea } from "../../components";
+import { Content, InputText, InputTextArea, UlErrors } from "../../components";
 import { UserContext } from "../../context";
 import { HeaderStyles, ButtonStyles } from "../../styles";
 import { useRegistrationForm } from "./useRegistrationForm";
@@ -19,7 +19,7 @@ export const RegistrationPage = () => {
 				<h1 className={HeaderStyles.brown}>Jesteś zalogowany!</h1>
 			) : (
 				<form onSubmit={handles.submit} onReset={handles.reset} noValidate>
-					<label className="flex flex-col w-[690px] cursor-pointer">
+					<label className="flex flex-col w-[690px]">
 						<h1 className={HeaderStyles.brown}>Rejestracja</h1>
 						<div className="flex w-full gap-[15px]">
 							<InputText
@@ -69,9 +69,9 @@ export const RegistrationPage = () => {
 								errorText={states.errors.repeatPassword}
 							/>
 						</div>
-						{/* <UlErrors errors={states.errors} /> */}
+						<UlErrors password={states.formData.password} />
 					</label>
-					<label className="flex flex-col w-[690px] cursor-pointer">
+					<label className="flex flex-col w-[690px]">
 						<h2 className="py-[35px] text-[14px] font-[900] text-c1 uppercase">
 							Adres i informacje o gospodarstwie
 						</h2>
