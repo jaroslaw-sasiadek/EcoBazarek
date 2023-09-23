@@ -2,6 +2,7 @@ interface SharedProps {
 	labelClass?: string;
 	spanName: string;
 	inputClass?: string;
+	isRequired?: boolean;
 	errorText?: string;
 }
 

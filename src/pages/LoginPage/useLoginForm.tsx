@@ -5,7 +5,7 @@ import { isValid } from "../../components/validation";
 import { UserContext } from "../../context";
 import { LoginProps } from "../../interfaces";
 
-export const useProfileForm = () => {
+export const useLoginForm = () => {
 	const { isLoggedIn, logIn } = useContext(UserContext);
 
 	function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -20,6 +20,7 @@ export const useProfileForm = () => {
 
 		event.preventDefault();
 		isEmailValid && isPasswordValid ? logIn(event, data) : null;
+		isLoggedIn ? "" : "";
 	}
 
 	return { isLoggedIn, submit };

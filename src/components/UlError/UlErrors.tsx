@@ -8,6 +8,10 @@ export const UlErrors = ({ password }: { password: string }) => {
 			<li className="flex py-[2px]">
 				Hasło musi spełniać następujące wymagania:
 			</li>
+			<li className={text.symbol}>
+				<span className="text-[16px]">{icon.symbol}</span>
+				<span>Przynajmniej jeden znak specjalny</span>
+			</li>
 			<li className={text.character}>
 				<span className="text-[16px]">{icon.character}</span>
 				<span>Przynajmniej jedna duża litera</span>
@@ -19,10 +23,6 @@ export const UlErrors = ({ password }: { password: string }) => {
 			<li className={text.number}>
 				<span className="text-[16px]">{icon.number}</span>
 				<span>Przynajmniej jedna cyfra</span>
-			</li>
-			<li className={text.symbol}>
-				<span className="text-[16px]">{icon.symbol}</span>
-				<span>Znak specjalny</span>
 			</li>
 		</ul>
 	);

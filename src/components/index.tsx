@@ -4,4 +4,4 @@ export { Content } from "./Content";
 export { InputText, InputTextArea } from "./InputText";
 export { LinkItem } from "./LinkItem";
 export { UlCategories } from "./UlCategories";
-export { UlErrors } from "./UlError/UlErrors";
+export { UlErrors } from "./UlError";

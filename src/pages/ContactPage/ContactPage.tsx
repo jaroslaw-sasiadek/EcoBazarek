@@ -1,20 +1,13 @@
 import { useState } from "react";
 
-import { Data } from "../../API";
-import { Content, InputText } from "../../components";
-import { ContactProps } from "../../interfaces";
-import { TextFieldStyles, ButtonStyles } from "../../styles";
+import { Content, InputText, InputTextArea } from "../../components";
+import { ButtonStyles, HeaderStyles } from "../../styles";
 import { SnazzyMap } from "./SnazzyMap";
+import { useContactForm } from "./useContactForm";
 
 export const ContactPage = () => {
 	const [loading, setLoading] = useState(true);
-
-	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-		const formData = new FormData(event.target as HTMLFormElement);
-		const data = Object.fromEntries(formData) as unknown as ContactProps;
-		Data.Others.Contact(event, data);
-	}
-
+	const { getFieldProps, states, handles } = useContactForm();
 	return (
 		<Content
 			title="EcoBazarek | Kontakt"
@@ -22,50 +15,65 @@ export const ContactPage = () => {
 			description="Skontaktuj się z nami; napisz do nas wiadomość"
 			isLoading={loading}
 		>
-			<h1 className="pt-[72px] pb-[38px] text-[48px] font-[900] text-[--c1] uppercase">
-				Kontakt
-			</h1>
+			<h1 className={HeaderStyles.brown}>Kontakt</h1>
 			<SnazzyMap onLoad={() => setLoading(false)} />
 			<label className="flex flex-col cursor-pointer mt-[722px] w-[690px]">
-				<h2 className="pt-[72px] pb-[38px] text-[20px] font-[900] text-[--c1] uppercase">
+				<h2
+					className={
+						"pt-[72px] pb-[38px] text-[20px] font-[900] text-c1 uppercase"
+					}
+				>
 					Napisz wiadomość
 				</h2>
-				<form onSubmit={handleSubmit}>
+				<form
+					className="flex flex-col"
+					onSubmit={handles.submit}
+					onReset={handles.reset}
+					noValidate
+				>
 					<InputText
-						spanName="Imię i nazwisko*"
-						name="fullName"
+						spanName="Imię i nazwisko"
 						type="text"
 						autoComplete="name"
-						required
+						{...getFieldProps("fullName")}
+						errorText={states.errors.fullName}
+						isRequired={true}
 					/>
 					<div className="flex w-full gap-[16px]">
-						<div className="w-full">
+						<div className="flex w-full">
 							<InputText
-								spanName="Email*"
-								name="email"
+								spanName="Email"
 								type="email"
 								autoComplete="email"
-								required
+								{...getFieldProps("email")}
+								errorText={states.errors.email}
+								isRequired={true}
 							/>
 						</div>
-						<div className="w-full">
+						<div className="flex w-full">
 							<InputText
 								spanName="Telefon"
-								name="phone"
 								type="tel"
 								autoComplete="tel"
-								required
+								{...getFieldProps("phone")}
+								errorText={states.errors.phone}
+								isRequired={true}
 							/>
 						</div>
 					</div>
-					<InputText spanName="Temat*" name="subject" type="text" required />
-					<span className="text-[12px] font-[500]">Wiadomość</span>
-					<textarea
-						className={
-							TextFieldStyles.area + " w-full mb-[34px] h-[130px] block"
-						}
-						name="message"
-						required
+					<InputText
+						spanName="Temat"
+						type="text"
+						{...getFieldProps("subject")}
+						errorText={states.errors.subject}
+						isRequired={true}
+					/>
+					<InputTextArea
+						spanName="Wiadomość"
+						inputClass={`mb-[34px] block`}
+						{...getFieldProps("message")}
+						errorText={states.errors.message}
+						isRequired={true}
 					/>
 					<div className="mt-[30px] flex w-full justify-end">
 						<input
@@ -79,6 +87,7 @@ export const ContactPage = () => {
 							name="add"
 							type="submit"
 							value="Dodaj"
+							disabled={states.isDisabled}
 						/>
 					</div>
 				</form>

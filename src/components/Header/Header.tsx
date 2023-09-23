@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 
 import { Assets } from "../../assets";
@@ -6,9 +6,11 @@ import { NavItem } from "./NavItem";
 import { ScrollUpButton } from "./ScrollUpButton";
 import { Favourites } from "./Favourites";
 import { Search } from "./Search";
+import { UserContext } from "../../context";
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState({ search: false, favourite: false });
+	const { isLoggedIn } = useContext(UserContext);
 
 	function handleToggle(type: "search" | "favourites") {
 		setIsOpen((prev) => ({
@@ -45,8 +47,8 @@ export const Header = () => {
 					/>
 					<NavItem
 						className="hover:text-c1 z-[1]"
-						linkTitle="login/ profil"
-						to="/profil"
+						linkTitle="profil"
+						to={isLoggedIn ? "/profil" : "/logowanie"}
 					>
 						<UserIcon className="w-[24px]" />
 					</NavItem>

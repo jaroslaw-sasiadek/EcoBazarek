@@ -5,5 +5,5 @@ export const TextFieldStyles = {
 		"focus:outline-none h-[42px] px-[10px] bg-c5 rounded-[2px] text-[18px] font-[400] text-c1",
 	otherError:
 		"focus:outline-c7 h-[42px] px-[10px] bg-c5 rounded-[2px] text-[18px] font-[400] text-c7",
-	area: "focus:outline-none px-[10px] bg-c5 rounded-[2px] text-[18px] font-[400] text-c1",
+	area: "focus:outline-none px-[10px] pt-[4px] bg-c5 rounded-[2px] text-[18px] font-[400] text-c1",
 };

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 import { Content, InputText, InputTextArea, UlErrors } from "../../components";
 import { UserContext } from "../../context";
@@ -16,53 +17,58 @@ export const RegistrationPage = () => {
 			isLoading={false}
 		>
 			{isLoggedIn ? (
-				<h1 className={HeaderStyles.brown}>Jesteś zalogowany!</h1>
+				<Navigate to="/profil" />
 			) : (
 				<form onSubmit={handles.submit} onReset={handles.reset} noValidate>
 					<label className="flex flex-col w-[690px]">
 						<h1 className={HeaderStyles.brown}>Rejestracja</h1>
 						<div className="flex w-full gap-[15px]">
 							<InputText
-								spanName="Imię*"
+								spanName="Imię"
 								{...getFieldProps("firstName")}
 								type="text"
 								autoComplete="given-name"
 								errorText={states.errors.firstName}
+								isRequired={true}
 							/>
 							<InputText
-								spanName="Nazwisko*"
+								spanName="Nazwisko"
 								{...getFieldProps("lastName")}
 								type="text"
 								autoComplete="family-name"
 								errorText={states.errors.lastName}
+								isRequired={true}
 							/>
 						</div>
 						<div className="flex w-full gap-[15px]">
 							<InputText
-								spanName="Email*"
+								spanName="Email"
 								{...getFieldProps("email")}
 								type="email"
 								autoComplete="email"
 								errorText={states.errors.email}
+								isRequired={true}
 							/>
 							<InputText
-								spanName="Telefon*"
+								spanName="Telefon"
 								{...getFieldProps("phone")}
 								type="phone"
 								autoComplete="phone"
 								errorText={states.errors.phone}
+								isRequired={true}
 							/>
 						</div>
 						<div className="flex w-full gap-[15px]">
 							<InputText
-								spanName="Hasło*"
+								spanName="Hasło"
 								{...getFieldProps("password")}
 								type="password"
 								autoComplete="new-password"
 								errorText={states.errors.password}
+								isRequired={true}
 							/>
 							<InputText
-								spanName="Powtórz hasło*"
+								spanName="Powtórz hasło"
 								{...getFieldProps("repeatPassword")}
 								type="password"
 								autoComplete="new-password"
@@ -76,33 +82,35 @@ export const RegistrationPage = () => {
 							Adres i informacje o gospodarstwie
 						</h2>
 						<InputText
-							spanName="Nazwa gospodarstwa*"
+							spanName="Nazwa gospodarstwa"
 							{...getFieldProps("farmName")}
 							type="text"
 							errorText={states.errors.farmName}
+							isRequired={true}
 						/>
 						<InputTextArea
 							spanName="Opis gospodarstwa"
 							inputClass={`mb-[34px] block`}
-							name="farmDesc"
 							{...getFieldProps("farmDesc")}
 							errorText={states.errors.farmDesc}
 						/>
 						<div className="flex w-full gap-[16px]">
 							<div className="w-[50%]">
 								<InputText
-									spanName="Ulica*"
+									spanName="Ulica"
 									{...getFieldProps("street")}
 									type="text"
 									errorText={states.errors.street}
+									isRequired={true}
 								/>
 							</div>
 							<div className="flex w-[50%] gap-[16px]">
 								<InputText
-									spanName="Numer domu*"
+									spanName="Numer domu"
 									{...getFieldProps("streetNumber")}
 									type="text"
 									errorText={states.errors.streetNumber}
+									isRequired={true}
 								/>
 								<InputText
 									spanName="Numer mieszkania"
@@ -113,27 +121,29 @@ export const RegistrationPage = () => {
 						</div>
 						<div className="flex gap-[16px]">
 							<InputText
-								spanName="Miasto/ Wieś*"
+								spanName="Miasto/ Wieś"
 								{...getFieldProps("city")}
 								type="text"
 								errorText={states.errors.city}
+								isRequired={true}
 							/>
 							<InputText
-								spanName="Kod pocztowy*"
+								spanName="Kod pocztowy"
 								{...getFieldProps("postCode")}
 								type="text"
 								errorText={states.errors.postCode}
+								isRequired={true}
 							/>
 						</div>
 						<div className="flex gap-[16px]">
 							<InputText
-								spanName="Województwo*"
+								spanName="Województwo"
 								{...getFieldProps("voivodeship")}
 								type="text"
 								errorText={states.errors.voivodeship}
 							/>
 							<InputText
-								spanName="Powiat*"
+								spanName="Powiat"
 								{...getFieldProps("county")}
 								type="text"
 								errorText={states.errors.county}
@@ -141,16 +151,17 @@ export const RegistrationPage = () => {
 						</div>
 						<div className="flex gap-[16px]">
 							<InputText
-								spanName="Gmina*"
+								spanName="Gmina"
 								{...getFieldProps("district")}
 								type="text"
 								errorText={states.errors.district}
 							/>
 							<InputText
-								spanName="Kraj*"
+								spanName="Kraj"
 								{...getFieldProps("country")}
 								type="text"
 								errorText={states.errors.country}
+								isRequired={true}
 							/>
 						</div>
 						<div className="mt-[30px] flex w-full justify-end">

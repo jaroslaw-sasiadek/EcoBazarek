@@ -5,4 +5,5 @@ export * from "./Inputs";
 export * from "./Login";
 export * from "./Pages";
 export * from "./Request";
+export * from "./Response";
 export * from "./User";

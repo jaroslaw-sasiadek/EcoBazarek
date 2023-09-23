@@ -2,48 +2,32 @@ import { useState } from "react";
 
 import { Data } from "../../API";
 import {
+	ContactProps,
 	InputTextAreaProps,
 	InputTextProps,
 	ResponseErrors,
 	ResponseItem,
-	UserCreateProps,
 } from "../../interfaces";
+import { defaultContactState } from "./utils";
 import { ButtonStyles } from "../../styles";
-import { defaultUserState } from "./utils";
 
-export const useRegistrationForm = () => {
-	const [formData, setFormData] = useState<UserCreateProps>(defaultUserState);
+export const useContactForm = () => {
+	const [formData, setFormData] = useState<ContactProps>(defaultContactState);
 	const [isDisabled, setIsDisabled] = useState(false);
 	const [buttonStyle, setButtonStyle] = useState(ButtonStyles.green.enable);
 	const [errors, setErrors] = useState<ResponseErrors>({});
 
 	function reset() {
-		setFormData(defaultUserState);
+		setFormData(defaultContactState);
 	}
 
 	async function submit(event: React.FormEvent<HTMLFormElement>) {
 		setIsDisabled(true);
 		setButtonStyle(ButtonStyles.green.disable);
 
-		// Validatation on frontend
-		if (formData.password !== formData.repeatPassword) {
-			setIsDisabled(false);
-			setButtonStyle(ButtonStyles.green.enable);
-			const message = "Hasła muszą się zgadzać!";
-			setErrors({
-				["password"]: message,
-				["repeatPassword"]: message,
-			});
-			event.preventDefault();
-			return;
-		}
-		const data = { ...formData };
-		delete data["repeatPassword"];
-
 		event.preventDefault();
-		const response = await Data.Users.PostUsers(event, data);
+		const response = await Data.Others.Contact(event, formData);
 
-		// Validatation on backend
 		if (response && response !== "error") {
 			const objectErrors = response.reduce(
 				(previous: ResponseErrors, current: ResponseItem) => {
@@ -61,7 +45,7 @@ export const useRegistrationForm = () => {
 	}
 
 	const getFieldProps = (
-		key: keyof UserCreateProps
+		key: keyof ContactProps
 	): Omit<InputTextProps & InputTextAreaProps, "spanName"> => ({
 		name: key,
 		value: formData[key],
@@ -80,15 +64,10 @@ export const useRegistrationForm = () => {
 
 	const handles = { reset, submit };
 	const states = {
-		formData,
 		errors,
 		buttonStyle,
 		isDisabled,
 	};
 
-	return {
-		getFieldProps,
-		states,
-		handles,
-	};
+	return { getFieldProps, states, handles };
 };
