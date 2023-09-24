@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Content, InputText, InputTextArea } from "../../components";
 import { ButtonStyles, HeaderStyles } from "../../styles";
-import { SnazzyMap } from "./SnazzyMap";
+import { SnazzyMap } from "./components";
 import { useContactForm } from "./useContactForm";
 
 export const ContactPage = () => {
@@ -70,12 +70,11 @@ export const ContactPage = () => {
 					/>
 					<InputTextArea
 						spanName="Wiadomość"
-						inputClass={`mb-[34px] block`}
 						{...getFieldProps("message")}
 						errorText={states.errors.message}
 						isRequired={true}
 					/>
-					<div className="mt-[30px] flex w-full justify-end">
+					<div className="flex w-full justify-end gap-[20px]">
 						<input
 							className={ButtonStyles.text.enable}
 							name="reset"

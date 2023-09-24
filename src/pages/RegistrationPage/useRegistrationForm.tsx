@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Data } from "../../API";
 import {
-	InputTextAreaProps,
-	InputTextProps,
+	InputsProps,
 	ResponseErrors,
 	ResponseItem,
 	UserCreateProps,
 } from "../../interfaces";
 import { ButtonStyles } from "../../styles";
 import { defaultUserState } from "./utils";
+import { UserContext } from "../../context";
 
 export const useRegistrationForm = () => {
+	const { logIn } = useContext(UserContext);
 	const [formData, setFormData] = useState<UserCreateProps>(defaultUserState);
 	const [isDisabled, setIsDisabled] = useState(false);
 	const [buttonStyle, setButtonStyle] = useState(ButtonStyles.green.enable);
@@ -25,7 +26,6 @@ export const useRegistrationForm = () => {
 		setIsDisabled(true);
 		setButtonStyle(ButtonStyles.green.disable);
 
-		// Validatation on frontend
 		if (formData.password !== formData.repeatPassword) {
 			setIsDisabled(false);
 			setButtonStyle(ButtonStyles.green.enable);
@@ -43,7 +43,6 @@ export const useRegistrationForm = () => {
 		event.preventDefault();
 		const response = await Data.Users.PostUsers(event, data);
 
-		// Validatation on backend
 		if (response && response !== "error") {
 			const objectErrors = response.reduce(
 				(previous: ResponseErrors, current: ResponseItem) => {
@@ -52,17 +51,18 @@ export const useRegistrationForm = () => {
 				},
 				{}
 			);
-			console.log(objectErrors);
 			setErrors(objectErrors);
 		}
-		if (!response) return;
+		if (!response) {
+			const loginData = { password: formData.password, email: formData.email };
+			logIn(event, loginData);
+			return;
+		}
 		setIsDisabled(false);
 		setButtonStyle(ButtonStyles.green.enable);
 	}
 
-	const getFieldProps = (
-		key: keyof UserCreateProps
-	): Omit<InputTextProps & InputTextAreaProps, "spanName"> => ({
+	const getFieldProps = (key: keyof UserCreateProps): InputsProps => ({
 		name: key,
 		value: formData[key],
 		onChange: (event) => {
@@ -82,6 +82,7 @@ export const useRegistrationForm = () => {
 	const states = {
 		formData,
 		errors,
+		setErrors,
 		buttonStyle,
 		isDisabled,
 	};

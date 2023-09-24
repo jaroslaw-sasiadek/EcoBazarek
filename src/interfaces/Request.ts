@@ -10,7 +10,9 @@ export type RequestAllProp =
 	| RequestLoginProp;
 
 export interface RequestProps {
-	event?: React.FormEvent<HTMLFormElement>;
+	event?:
+		| React.FormEvent<HTMLFormElement>
+		| React.MouseEvent<HTMLInputElement, MouseEvent>;
 	request: () => Promise<RequestAllProp>;
 	successMessage?: string;
 	errorMessage: string;

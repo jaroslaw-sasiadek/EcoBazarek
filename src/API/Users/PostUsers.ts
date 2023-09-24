@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { Api } from "../apiURL";
 import { UserCreateProps } from "../../interfaces";
+import { Api } from "../apiURL";
 import { handleRequest } from "../handleRequest";
 
 export async function PostUsers(
@@ -11,8 +11,7 @@ export async function PostUsers(
 	async function request() {
 		await axios.post(Api.usersURL, props);
 	}
-	const successMessage = "Dziękujemy za rejestrację!";
 	const errorMessage = "Nie udało się zarejestrować";
 
-	return handleRequest({ event, request, successMessage, errorMessage });
+	return handleRequest({ event, request, errorMessage });
 }

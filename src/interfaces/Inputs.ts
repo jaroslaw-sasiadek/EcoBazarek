@@ -13,3 +13,6 @@ export interface InputTextProps
 export interface InputTextAreaProps
 	extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "className">,
 		SharedProps {}
+
+export interface InputsProps
+	extends Omit<InputTextProps & InputTextAreaProps, "spanName"> {}

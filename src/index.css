@@ -13,4 +13,7 @@
 		@apply min-h-[100vh];
 		@apply items-center;
 	}
+	:focus {
+		@apply outline-c3;
+	}
 }

@@ -20,9 +20,12 @@ export interface UserProps {
 	district: string;
 }
 
+export type tokenType = string | null;
+
 export interface UserContextProps {
-	token: string | null;
+	token: tokenType;
 	profile: UserProps | null;
+	setProfile: React.Dispatch<unknown>;
 	isLoggedIn: boolean;
 	loggingIn: boolean;
 	logIn: logInMethod;
@@ -30,4 +33,12 @@ export interface UserContextProps {
 
 export interface UserCreateProps extends Omit<UserProps, "id"> {
 	repeatPassword?: string;
+}
+
+export interface UserProfileProps extends Omit<UserProps, "password"> {}
+
+export interface ChangePasswordProps {
+	oldPassword: string;
+	newPassword: string;
+	repeatNewPassword: string;
 }

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-import { isValid } from "../../components/validation";
-import { UserContext } from "../../context";
-import { LoginProps } from "../../interfaces";
+import { isValid } from "../../../components/validation";
+import { UserContext } from "../../../context";
+import { LoginProps } from "../../../interfaces";
 
 export const useLoginForm = () => {
 	const { isLoggedIn, logIn } = useContext(UserContext);

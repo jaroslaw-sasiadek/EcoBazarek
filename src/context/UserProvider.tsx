@@ -32,7 +32,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
 	return (
 		<UserContext.Provider
-			value={{ loggingIn, token, profile, isLoggedIn: Boolean(profile), logIn }}
+			value={{
+				loggingIn,
+				token,
+				profile,
+				setProfile,
+				isLoggedIn: Boolean(profile),
+				logIn,
+			}}
 		>
 			{children}
 		</UserContext.Provider>
