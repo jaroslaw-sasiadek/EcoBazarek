@@ -30,5 +30,7 @@ export const UlProducts = ({ products }: { products: RequestProductsProp }) => {
 				);
 			})}
 		</ul>
-	) : null;
+	) : (
+		<>{isLoggedIn ? <AddProduct /> : null}</>
+	);
 };

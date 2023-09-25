@@ -1,15 +1,18 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
-import { Data } from "../../../../API";
-import { UserContext } from "../../../../context";
+import { Data } from "../../API";
 import {
 	RequestTypesProp,
 	RequestCategoriesProp,
 	RequestProductsProp,
-} from "../../../../interfaces";
-import { DivCategories, DivTypes, UlProducts } from "./components";
+} from "../../interfaces";
+import {
+	DivCategories,
+	DivTypes,
+	UlProducts,
+} from "../ProfilePage/components/UserProductsForm/components";
 
-export const UserProductsForm = ({
+export const ProductsForm = ({
 	setLoading,
 }: {
 	setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,13 +20,12 @@ export const UserProductsForm = ({
 	const [types, setTypes] = useState<RequestTypesProp>([]);
 	const [categories, setCategories] = useState<RequestCategoriesProp>([]);
 	const [products, setProducts] = useState<RequestProductsProp>([]);
-	const { profile } = useContext(UserContext);
 	useEffect(() => {
 		setLoading(true);
 		Promise.all([
 			Data.Products.GetTypes(),
 			Data.Products.GetCategories(),
-			profile ? Data.Products.GetProductsId(profile.id) : null,
+			Data.Products.GetProducts(),
 		])
 			.then((response) => {
 				setTypes(response[0] as RequestTypesProp);
@@ -33,7 +35,7 @@ export const UserProductsForm = ({
 			.finally(() => {
 				setLoading(false);
 			});
-	}, [profile, setLoading]);
+	}, [setLoading]);
 
 	return (
 		<section className="flex gap-[16px] w-full">

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { Content } from "../components";
-import { HeaderStyles } from "../styles";
-import { UserProductsForm } from "./ProfilePage/components";
+import { Content } from "../../components";
+import { HeaderStyles } from "../../styles";
+import { ProductsForm } from "./ProductsForm";
 
 export const ProductsPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +14,7 @@ export const ProductsPage = () => {
 			isLoading={isLoading}
 		>
 			<h1 className={HeaderStyles.brown}>Produkty</h1>
-			<UserProductsForm setLoading={setIsLoading} />
+			<ProductsForm setLoading={setIsLoading} />
 		</Content>
 	);
 };
