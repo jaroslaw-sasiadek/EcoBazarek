@@ -3,14 +3,14 @@ import { ButtonStyles } from "../../../../styles";
 import { usePasswordForm } from "./usePasswordForm";
 
 export const PasswordForm = () => {
-	const { getFieldProps, formData, handles, errors } = usePasswordForm();
+	const { getFieldsProps, formData, handles, errors } = usePasswordForm();
 	return (
 		<form onSubmit={handles.submitForm} onReset={handles.resetForm} noValidate>
 			<label className="flex flex-col w-[515px]">
 				<div className="flex flex-col w-full">
 					<InputText
 						spanName="Stare hasło"
-						{...getFieldProps("oldPassword")}
+						{...getFieldsProps.oldPassword}
 						type="password"
 						autoComplete="oldPassword"
 						errorText={errors.oldPassword}
@@ -18,7 +18,7 @@ export const PasswordForm = () => {
 					/>
 					<InputText
 						spanName="Nowe hasło"
-						{...getFieldProps("newPassword")}
+						{...getFieldsProps.newPassword}
 						type="password"
 						autoComplete="new-password"
 						errorText={errors.newPassword}
@@ -26,7 +26,7 @@ export const PasswordForm = () => {
 					/>
 					<InputText
 						spanName="Powtórz nowe hasło"
-						{...getFieldProps("repeatNewPassword")}
+						{...getFieldsProps.repeatNewPassword}
 						type="password"
 						autoComplete="new-password"
 						errorText={errors.repeatNewPassword}

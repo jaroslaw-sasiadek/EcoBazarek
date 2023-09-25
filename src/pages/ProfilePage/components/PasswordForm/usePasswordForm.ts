@@ -1,17 +1,14 @@
 import { useContext, useState } from "react";
 
 import { Data } from "../../../../API";
-import { UserContext } from "../../../../context";
-import {
-	ChangePasswordProps,
-	ResponseErrors,
-	InputsProps,
-} from "../../../../interfaces";
-import { defaultFormState } from "./utils";
+import { getFieldProps } from "../../../../components/Forms/getFieldProps";
 import {
 	comparePasswords,
 	gatherResponseErrors,
 } from "../../../../components/validation";
+import { UserContext } from "../../../../context";
+import { ChangePasswordProps, ResponseErrors } from "../../../../interfaces";
+import { defaultFormState } from "./utils";
 
 export const usePasswordForm = () => {
 	const { token } = useContext(UserContext);
@@ -31,7 +28,7 @@ export const usePasswordForm = () => {
 			formData.repeatNewPassword
 		);
 		setErrors({ ...compareError });
-		if (Object.keys(errors).length === 0) return;
+		if (Object.keys(errors).length !== 0) return;
 
 		const data = {
 			oldPassword: formData.oldPassword,
@@ -49,26 +46,17 @@ export const usePasswordForm = () => {
 		Data.Users.DeleteUser(event, token);
 	}
 
-	const getFieldProps = (key: keyof ChangePasswordProps): InputsProps => ({
-		name: key,
-		value: formData[key],
-		onChange: (event) => {
-			setErrors((previous) => {
-				const current = structuredClone(previous);
-				delete current[key];
-				return current;
-			});
-			setFormData((previous) => ({
-				...previous,
-				[key]: event.target.value,
-			}));
-		},
-	});
+	const data = { formData, setFormData, setErrors };
+	const getFieldsProps = {
+		oldPassword: getFieldProps(data, "oldPassword"),
+		newPassword: getFieldProps(data, "newPassword"),
+		repeatNewPassword: getFieldProps(data, "repeatNewPassword"),
+	};
 
 	const handles = { resetForm, submitForm, deleteUser };
 
 	return {
-		getFieldProps,
+		getFieldsProps,
 		formData,
 		handles,
 		errors,
