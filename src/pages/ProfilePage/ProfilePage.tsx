@@ -2,7 +2,7 @@ import { Content } from "../../components";
 import { HeaderStyles } from "../../styles";
 import { SignIn } from "./components";
 import { Tabs } from "./components/Tabs/Tabs";
-import { useLoginForm } from "./components/useLoginForm";
+import { useLoginForm } from "./components/SignIn";
 
 export const ProfilePage = () => {
 	const { isLoggedIn, submit } = useLoginForm();

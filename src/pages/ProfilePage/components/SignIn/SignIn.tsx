@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { InputText } from "../../../components";
-import { ButtonStyles, HeaderStyles } from "../../../styles";
+
+import { InputText } from "../../../../components";
+import { HeaderStyles, ButtonStyles } from "../../../../styles";
 
 export const SignIn = ({
 	submit,

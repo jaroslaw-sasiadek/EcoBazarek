@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-import { isValid } from "../../../components/validation";
-import { UserContext } from "../../../context";
-import { LoginProps } from "../../../interfaces";
+import { isValid } from "../../../../components/validation";
+import { UserContext } from "../../../../context";
+import { LoginProps } from "../../../../interfaces";
 
 export const useLoginForm = () => {
 	const { isLoggedIn, logIn } = useContext(UserContext);
@@ -13,10 +13,9 @@ export const useLoginForm = () => {
 		const data = Object.fromEntries(formData) as unknown as LoginProps;
 
 		const isEmailValid = isValid.email(data.email);
+		if (!isEmailValid) toast.error("Podano nieprawidłowy email!");
 		const isPasswordValid = isValid.password(data.password);
-
-		isEmailValid ? null : toast.error("Podano nieprawidłowy email!");
-		isPasswordValid ? null : toast.error("Podano nieprawidłowe hasło!");
+		if (!isPasswordValid) toast.error("Podano nieprawidłowe hasło!");
 
 		event.preventDefault();
 		isEmailValid && isPasswordValid ? logIn(event, data) : null;

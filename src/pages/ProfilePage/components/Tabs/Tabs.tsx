@@ -1,6 +1,6 @@
 import { Tab } from "@headlessui/react";
 
-import { PasswordForm, FarmData, YourProducts } from "..";
+import { PasswordForm, FarmData, UserProductsForm } from "..";
 import { CustomTab } from "./CustomTab";
 import { TabStyles } from "../../../../styles";
 
@@ -20,7 +20,7 @@ export const Tabs = () => {
 					<PasswordForm />
 				</Tab.Panel>
 				<Tab.Panel>
-					<YourProducts />
+					<UserProductsForm />
 				</Tab.Panel>
 			</Tab.Panels>
 		</Tab.Group>
