@@ -10,12 +10,23 @@ import {
 import { useRegistrationForm } from "../../../RegistrationPage/useRegistrationForm";
 import { Data } from "../../../../API";
 import { defaultUserState } from "../../../RegistrationPage/utils";
+import { toast } from "react-toastify";
 
 export const useFarmDataForm = () => {
 	const { profile, setProfile, token } = useContext(UserContext);
 	const profileState = profile ? profile : defaultUserState;
 	const { states } = useRegistrationForm();
 	const [formData, setFormData] = useState(profileState);
+
+	const logOut = () => {
+		sessionStorage.removeItem("user");
+		sessionStorage.removeItem("token");
+		toast.success("Po chwili nastąpi wylogowanie!");
+
+		setTimeout(function () {
+			location.reload();
+		}, 2000);
+	};
 
 	(states.formData as unknown) = formData;
 	const reset = () => setFormData(profileState);
@@ -58,7 +69,7 @@ export const useFarmDataForm = () => {
 		},
 	});
 
-	const handles = { reset, submitFarmData };
+	const handles = { logOut, reset, submitFarmData };
 
 	return {
 		getFieldProps,

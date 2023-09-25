@@ -24,6 +24,15 @@ export const FarmData = () => {
 					errors={states.errors}
 				/>
 				<FormButtons
+					children={
+						<input
+							className={states.buttonStyle + " absolute left-0"}
+							onClick={handles.logOut}
+							name="logOut"
+							type="button"
+							value="Wyloguj"
+						/>
+					}
 					buttonStyle={states.buttonStyle}
 					isDisabled={states.isDisabled}
 				/>
