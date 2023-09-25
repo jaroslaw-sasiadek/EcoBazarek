@@ -1,10 +1,11 @@
 import { Assets } from "../../assets";
 import { Content, UlCategories } from "../../components";
+import { UlProducts } from "../ProfilePage/components/UserProductsForm/components";
 import { generateMock } from "./generateMock";
 import { useGetData } from "./useGetData";
 
 export const HomePage = () => {
-	const { loading, topCategories } = useGetData();
+	const { loading, topCategories, products } = useGetData();
 	return (
 		<Content
 			title="EcoBazarek | Home"
@@ -29,8 +30,9 @@ export const HomePage = () => {
 			<h2 className="pt-[40px] pb-[60px] text-center text-[32px] font-[500] uppercase">
 				produkty
 			</h2>
-			<section>
-				<ul className="flex flex-wrap gap-[16px] products">{generateMock()}</ul>
+			<section className="flex flex-wrap gap-[16px]">
+				<UlProducts products={products} />
+				<ul className="flex flex-wrap gap-[16px]">{generateMock()}</ul>
 			</section>
 		</Content>
 	);

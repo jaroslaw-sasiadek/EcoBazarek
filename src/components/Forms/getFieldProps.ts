@@ -8,7 +8,11 @@ export const getFieldProps = <T, E, K extends keyof T & keyof E>(
 ): {
 	name: K;
 	value: T[K];
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange: (
+		event:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.ChangeEvent<HTMLTextAreaElement>
+	) => void;
 } => ({
 	name: key,
 	value: data.formData[key],

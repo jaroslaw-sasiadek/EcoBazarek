@@ -1,5 +1,6 @@
 import { PagesProps } from "../interfaces";
 import { AboutPage } from "./AboutPage";
+import { AddProductPage } from "./AddProductPage";
 import { ContactPage } from "./ContactPage";
 import { HomePage } from "./HomePage";
 import { NotFoundPage } from "./NotFoundPage";
@@ -11,6 +12,7 @@ import { TermsOfServicePage } from "./TermsOfServicePage";
 
 export const Pages: PagesProps[] = [
 	{ path: "/o-nas", element: <AboutPage /> },
+	{ path: "/dodaj-produkt", element: <AddProductPage /> },
 	{ path: "/kontakt", element: <ContactPage /> },
 	{ path: "/", element: <HomePage /> },
 	{ path: "/*", element: <NotFoundPage /> },

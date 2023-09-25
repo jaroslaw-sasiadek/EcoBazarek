@@ -4,7 +4,11 @@ import { PasswordForm, FarmData, UserProductsForm } from "..";
 import { CustomTab } from "./CustomTab";
 import { TabStyles } from "../../../../styles";
 
-export const Tabs = () => {
+export const Tabs = ({
+	setLoading,
+}: {
+	setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
 	return (
 		<Tab.Group>
 			<Tab.List className={TabStyles.tabListStyle}>
@@ -20,7 +24,7 @@ export const Tabs = () => {
 					<PasswordForm />
 				</Tab.Panel>
 				<Tab.Panel>
-					<UserProductsForm />
+					<UserProductsForm setLoading={setLoading} />
 				</Tab.Panel>
 			</Tab.Panels>
 		</Tab.Group>

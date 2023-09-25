@@ -11,7 +11,7 @@ import { ContentProps } from "../../interfaces";
 export const Content = (props: ContentProps) => {
 	const { children, title, keywords, description, isLoading, ...other } = props;
 	return (
-		<main className="pt-[64px] pb-[200px] max-w-[1040px] w-full" {...other}>
+		<main className="pt-[64px] pb-[200px] max-w-[1048px] w-full" {...other}>
 			<Helmet>
 				<title>{title}</title>
 				<meta name="keywords" content={keywords} />

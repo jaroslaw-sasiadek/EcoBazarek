@@ -8,6 +8,6 @@ export {
 } from "./Forms";
 export { Header } from "./Header";
 export { InputText, InputTextArea } from "./InputText";
+export { UlErrors } from "./UlError";
 export { LinkItem } from "./LinkItem";
 export { UlCategories } from "./UlCategories";
-export { UlErrors } from "./UlError";
