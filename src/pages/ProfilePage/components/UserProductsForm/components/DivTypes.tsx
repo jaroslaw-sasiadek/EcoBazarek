@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import { RequestTypesProp } from "../../../../../interfaces";
 
 export const DivTypes = ({ types }: { types: RequestTypesProp }) => {
@@ -12,7 +11,14 @@ export const DivTypes = ({ types }: { types: RequestTypesProp }) => {
 		}));
 	}
 
-	return types !== "error" ? (
+	useEffect(() => {
+		if (Array.isArray(types) && types.length > 0) {
+			const initialCheckedItems: Record<string, boolean> = {};
+			setCheckedItems(initialCheckedItems);
+		}
+	}, [types]);
+
+	return Array.isArray(types) && types.length > 0 ? (
 		<div>
 			<span className="flex mt-[30px] mb-[14px] text-[14px] font-[900]">
 				Typ

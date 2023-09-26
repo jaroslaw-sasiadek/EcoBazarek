@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import { RequestCategoriesProp } from "../../../../../interfaces";
 
 export const DivCategories = ({
@@ -16,7 +15,14 @@ export const DivCategories = ({
 		}));
 	}
 
-	return categories !== "error" ? (
+	useEffect(() => {
+		if (Array.isArray(categories) && categories.length > 0) {
+			const initialCheckedItems: Record<string, boolean> = {};
+			setCheckedItems(initialCheckedItems);
+		}
+	}, [categories]);
+
+	return Array.isArray(categories) && categories.length > 0 ? (
 		<div>
 			<span className="flex mt-[30px] mb-[14px] text-[14px] font-[900]">
 				Kategorie
