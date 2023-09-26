@@ -37,7 +37,7 @@ export const DivCategories = ({
 					>
 						<label className="flex gap-[12px] items-center select-none cursor-pointer">
 							<input
-								className="text-blue-500 form-checkbox h-[16px] w-[16px] rounded-[4px] cursor-pointer"
+								className="h-[16px] w-[16px] rounded-[4px] cursor-pointer"
 								type="checkbox"
 								value={category.name}
 								checked={checkedItems[category.name] || false}
